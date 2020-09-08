@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+    before_action :authenticate_user, only: [:show]
+    
     def index
         @users = User.all
         if @users
@@ -12,15 +13,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
-        if @user
-            render json: @user 
+        user = User.find(params[:id])
+        if user
+            render json: UserSerializer.new(user).serialized_json
         else
-            render json: {
-                status: 500,
-                errors: ['no user found']
-            }
-        end
+            render json: {status: 500, errors:['no user found']}
     end
 
     def create
