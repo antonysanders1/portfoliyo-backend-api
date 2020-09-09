@@ -2,10 +2,11 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by(email: params[:user][:email])
+        # avatar = rails_blob_path(@user.avatar)
         if @user && @user.authenticate(params[:user][:password])
             created_jwt = issue_token({id: @user.id})
             cookies.signed[:jwt] = {value: created_jwt, httponly: true, expires: 1.hour.from_now}
-            render json: @user
+            render json: serialized_user(current_user)
         else
             render json: {
                 error: 'Oops! Email or Password Incorrect.'
