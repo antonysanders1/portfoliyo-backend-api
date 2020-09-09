@@ -13,8 +13,8 @@ class ApplicationController < ActionController::API
         !!current_user
     end
 
-    def serializer_user(user)
-        { name: user.name, email:user.email, id: user.id, title: user.title, works: user.works}
+    def serialized_user(user)
+        { name: user.name, email:user.email, id: user.id, title: user.title, avatar: rails_blob_path(user.avatar), works: user.works}
     end
 
     def issue_token(payload)
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
 
     def authenticate_user
         jwt = cookies.signed[:jwt]
-        JWT.decode(jwt, "s3cr3t", "HS256")
+        JWT.decode(jwt, "s3cr3t", "HS256")[0]["id"]
     end
 
 end
