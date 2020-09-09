@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :authenticate_user, only: [:show]
     
     def index
-        @users = User.all
+        @users = User.all.with_attached_avatar.order(id: :desc)
         if @users
             render json: @users
         else 
@@ -14,10 +14,12 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(params[:id])
+        avatar = rails_blob_path(@user.avatar)
         if user
             render json: UserSerializer.new(user).serialized_json
         else
             render json: {status: 500, errors:['no user found']}
+        end
     end
 
     def create
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :name, :title, :password)
+        params.require(:user).permit(:email, :name, :title, :password, :avatar)
     end
 
 end
