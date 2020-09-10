@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
     def index
-        works = Work.all
+        works = Work.all.with_attached_image.order(id: :desc)
         render json: works
     end
 
