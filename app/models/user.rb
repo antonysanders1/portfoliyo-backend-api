@@ -7,10 +7,10 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :email, uniqueness: true
 
-    def avatar_url
-        Rails.application.routes.url_helpers.rails_representation_url(
-          avatar.variant(resize_to_limit: [200, 200]).processed, only_path: true
-        )
-      end
+    # def avatar_url
+    #     Rails.application.routes.url_helpers.rails_representation_url(
+    #       avatar.variant(resize_to_limit: [200, 200]).processed, only_path: true
+    #     )
+    #   end
     
 end
