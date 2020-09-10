@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:user][:password])
             created_jwt = issue_token({id: @user.id})
             cookies.signed[:jwt] = {value: created_jwt, httponly: true, expires: 1.hour.from_now}
-            render json: serialized_user(current_user)
+            render json: current_user
         else
             render json: {
                 error: 'Oops! Email or Password Incorrect.'
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
     def currentUser
         if logged_in?
-            render json: serializer_user(current_user)
+            render json: current_user
         else
             render json: {error: "No current user"}
         end
