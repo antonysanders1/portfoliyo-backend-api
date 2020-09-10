@@ -13,9 +13,9 @@ class ApplicationController < ActionController::API
         !!current_user
     end
 
-    def serialized_user(user)
-        { name: user.name, email:user.email, id: user.id, title: user.title, avatar: rails_blob_path(user.avatar), works: user.works}
-    end
+    # def serialized_user(user)
+    #     { name: user.name, email:user.email, id: user.id, title: user.title, avatar: rails_blob_path(user.avatar), works: user.works}
+    # end
 
     def issue_token(payload)
         JWT.encode(payload, "s3cr3t", "HS256")
