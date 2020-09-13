@@ -1,3 +1,14 @@
+# Portfoli-Yo! Backend-API
+
+Portfoli-Yo! is an app where users have the ability to create a digital portfolio by uploading and sharing their individual works with the community.
+This is the backend-api. [DEMO](https://www.youtube.com/watch?v=DgDs7AbwzzI)
+
+## General Info
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Click the link below to reference the Backend API! 
+[Reference to Frontend - ReactJs](https://github.com/antonysanders1/portfoliyo-client)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,4 +33,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# portfoliyo-backend-api
