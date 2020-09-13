@@ -28,14 +28,23 @@ class UsersController < ApplicationController
             cookies.signed[:jwt] = {value: created_jwt, httponly: true, expires: 1.hour.from_now}
             render json: @user
         else
-            render json: {error: "An account with this email has already been created."}
+            render json: {error: "Oops! We encountered an error! Plese try again."}
         end
     end
+
+    def update
+        user = User.find(params[:id])
+        user.update(avatar: params[:avatar])
+        #avatar_url = rails_blob_path(user.avatar)
+        
+        render json: user
+    end
+
 
     private
 
     def user_params
-        params.require(:user).permit(:email, :name, :title, :password, :avatar)
+        params.require(:user).permit(:email, :name, :title, :bio, :password)
     end
 
 end
