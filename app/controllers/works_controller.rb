@@ -11,14 +11,20 @@ class WorksController < ApplicationController
     end
 
     def create
-        work = Work.new(work_params)
-        if !work.save
-            work = Work.find_by(id: params[:id])
+        work = Work.create(work_params)
+        if work
             render json: work
         else
             render json: {error: "Could not create post."}
         end
         
+    end
+
+    def update
+        work = Work.find(params[:id])
+        work.update(image: params[:image])
+        
+        render json: work
     end
 
     # def destroy
