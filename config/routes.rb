@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   delete '/logout' => "sessions#destroy"
   get '/currentUser' => "sessions#currentUser"
 
+  post 'rails/active_storage/direct_uploads' => 'direct_uploads#create'
+
   resources :users do
     resources :works
   end
