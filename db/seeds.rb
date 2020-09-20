@@ -29,7 +29,7 @@ io: File.open('./public/works/Nipsey.png'), filename: 'Nipsey.png', content_type
 work4 = Work.create({ title: 'Hyliion 6x4HSEA', description: "It is my pleasure to introduce the Hyliion 6x4HSEA, only available today 04.01.19 😆\n
 Tons of fun to to work on and always a joy to flex the 3D modeling & rendering skills + snippet story telling.
 Enjoy!\n\nTools: 3DSMax, Keyshot, photoshop", user_id: 2 }).image.attach(
-io: File.open('./public/works/work.png'), filename: 'work.png', content_type: 'image/png')
+io: File.open('./public/works/Hyliion6x4HSEA.png'), filename: 'hyliion6x4HSEA.png', content_type: 'image/png')
 
 work5 = Work.create({ title: 'Check Out UI Design', description: "A UI Design for a checkout page for Rent-A-Car. What do you think?", user_id: 1 }).image.attach(
 io: File.open('./public/works/rentacar.png'), filename: 'rentacar.png', content_type: 'image/png')
