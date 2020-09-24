@@ -34,10 +34,14 @@ class UsersController < ApplicationController
 
     def update
         user = User.find(params[:id])
-        user.update(avatar: params[:avatar])
+        if user.update(user_params)
+            render json: user
+        elsif user.update(avatar: params[:avatar])
+            render json: user
         #avatar_url = rails_blob_path(user.avatar)
-        
-        render json: user
+        else
+            render json: {error: "Oops! We encountered an error! Plese try again."}
+        end
     end
 
 
